@@ -1,20 +1,73 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DetailsScreen, HomeScreen, ProfilScreen } from './screens';
+import { Button } from 'react-native-paper';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={({ navigation }) => ({
+          headerStyle: {
+            // backgroundColor: '#f4511e',
+          },
+          // headerTintColor: '#fff',
+          headerTitleStyle: {
+            // fontWeight: 'bold',
+          },
+          headerRight: () => (
+            <Button icon="account" mode="contained" onPress={
+              () => navigation.navigate('Profil', {
+                  itemId: 86,
+                  otherParam: 'anything you want here',
+                })
+          }>
+              me
+            </Button>
+          ),
+        })}
+      >
+        <Stack.Screen 
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Home', headerShown: false }}
+          // options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          initialParams={{ itemId: 42 }}
+          options={{ 
+            title: 'Details'
+          }}
+          
+        />
+        <Stack.Screen
+          name="Profil"
+          component={ProfilScreen}
+          initialParams={{ itemId: 42 }}
+          options={({ navigation }) => ({ 
+            title: 'Profil',
+            headerRight: () => (
+              <Button icon="home" mode="contained" onPress={
+                () => navigation.navigate('Home', {
+                    itemId: 86,
+                    otherParam: 'anything you want here',
+                  })
+            }>
+                Home
+              </Button>
+            ),
+          })}
+          
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
