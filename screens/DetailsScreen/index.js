@@ -10,7 +10,7 @@ function DetailsScreen({ route, navigation }) {
         <Text>Details Screen</Text>
         <Text>itemId: {JSON.stringify(itemId)}</Text>
         <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-        <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+        <Button title="Go to Home" onPress={() => navigation.navigate('Feed')} />
       </View>
     );
   }

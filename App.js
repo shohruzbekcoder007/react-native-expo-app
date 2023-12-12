@@ -34,10 +34,10 @@ function App() {
         <Stack.Screen 
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Home', headerShown: false }}
+          options={{ title: 'Home'}}
           // options={{ headerShown: false }}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Details"
           component={DetailsScreen}
           initialParams={{ itemId: 42 }}
@@ -45,7 +45,7 @@ function App() {
             title: 'Details'
           }}
           
-        />
+        /> */}
         <Stack.Screen
           name="Profil"
           component={ProfilScreen}
