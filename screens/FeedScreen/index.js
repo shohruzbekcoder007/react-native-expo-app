@@ -1,9 +1,8 @@
-import { View, ScrollView, Text as SimpleText } from 'react-native'
+import { ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Card, Text } from 'react-native-paper';
-import axios from './../../utils/baseUrl';
 import CustomCard from '../../components/CustomCard';
 import all from './../../utils/all.json';
+import WrapperComponent from '../../components/WrapperComponent';
 
 export default function FeedScreen({ navigation }) {
   const [sura, setSura] = useState([])
@@ -11,7 +10,7 @@ export default function FeedScreen({ navigation }) {
     setSura(all.data.surahs)
   }, [])
   return (
-    <View>
+    <WrapperComponent>
       <ScrollView>
         {
           sura.map((item, index) => (
@@ -30,6 +29,6 @@ export default function FeedScreen({ navigation }) {
           ))
         }
       </ScrollView>
-    </View>
+    </WrapperComponent>
   )
 }

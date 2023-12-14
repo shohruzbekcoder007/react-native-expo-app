@@ -4,18 +4,21 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DetailsScreen, HomeScreen, ProfilScreen } from './screens';
 import { Button } from 'react-native-paper';
+import { StatusBar } from 'expo-status-bar';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
+    <>
+    <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#fff" translucent = {true}/>
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={({ navigation }) => ({
           headerStyle: {
-            // backgroundColor: '#f4511e',
+            backgroundColor: '#ccc',
           },
-          // headerTintColor: '#fff',
+          headerTintColor: '#fff',
           headerTitleStyle: {
             // fontWeight: 'bold',
           },
@@ -67,6 +70,7 @@ function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </>
   );
 }
 
