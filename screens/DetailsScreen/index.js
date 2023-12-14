@@ -1,18 +1,27 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ScrollView } from 'react-native';
+import CustomCard from '../../components/CustomCard';
+import { Card } from 'react-native-paper';
 
 function DetailsScreen({ route, navigation }) {
 
-    const { itemId, otherParam } = route.params;
+  const { itemId, ayahs } = route.params;
 
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-        <Text>itemId: {JSON.stringify(itemId)}</Text>
-        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-        <Button title="Go to Home" onPress={() => navigation.navigate('Feed')} />
-      </View>
-    );
-  }
+  return (
+    <View>
+      <ScrollView>
+        {
+          ayahs.map((item, index) => (
+            <Card key={index} style={{ margin: 10 }} >
+              <Card.Content>
+                <Text style={{ color: "green", fontSize: 26 }}>{item.text}</Text>
+              </Card.Content>
+            </Card>
+          ))
+        }
+      </ScrollView>
+    </View>
+  );
+}
 
-  export default DetailsScreen
+export default DetailsScreen
