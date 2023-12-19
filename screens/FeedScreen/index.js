@@ -22,7 +22,7 @@ export default function FeedScreen({ navigation }) {
               onPressFunction={() => {
                 navigation.navigate('Details', {
                   itemId: item.number,
-                  ayahs: item.ayahs
+                  // ayahs: item.ayahs
                 })
               }}
             />
